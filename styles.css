@@ -167,3 +167,9 @@ section{padding:72px 0}
 .nl-archive{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:28px;align-items:center}
 .nl-archive-cover img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(1,41,18,.18)}
 @media (max-width:640px){.nl-archive{grid-template-columns:1fr}.nl-archive-cover{max-width:220px}}
+.faq{max-width:820px}
+.faq details{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;background:var(--white);margin-bottom:12px;padding:0 22px}
+.faq summary{cursor:pointer;font-weight:700;color:var(--green);padding:18px 0;list-style-position:outside}
+.faq summary:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.faq details[open] summary{border-bottom:1px solid var(--line)}
+.faq details p{margin:14px 0 18px}
