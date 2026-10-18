@@ -158,3 +158,12 @@ section{padding:72px 0}
 .news-item a{font-weight:700;text-decoration:none}
 .empty{text-align:center;max-width:640px;margin:0 auto}
 .empty div{display:flex;justify-content:center;margin-top:8px}
+.prose{max-width:760px}
+.prose h2{margin-top:1.6em}
+.prose h2:first-of-type{margin-top:.6em}
+.muted{color:var(--muted)}
+.apply-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.apply-small{margin-top:14px;color:var(--muted);font-size:.95rem}
+.nl-archive{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:28px;align-items:center}
+.nl-archive-cover img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(1,41,18,.18)}
+@media (max-width:640px){.nl-archive{grid-template-columns:1fr}.nl-archive-cover{max-width:220px}}
