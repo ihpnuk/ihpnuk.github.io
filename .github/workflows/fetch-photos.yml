@@ -11,17 +11,19 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify sector stats
         run: |
-          sudo apt-get install -y -qq poppler-utils >/dev/null
+          set +e
+          pip install -q pypdf
           mkdir -p linkcheck; R=linkcheck/stats.txt; rm -f $R
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
           curl -sL -A "$UA" -o nmc.pdf -w 'NMC %{http_code}\n' https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/0184ca-data-report-uk-web.pdf >> $R
           curl -sL -A "$UA" -o gmc.pdf -w 'GMC %{http_code}\n' https://www.gmc-uk.org/cdn/documents/wfr25-report-251117_pdf-112967442.pdf >> $R
           curl -sL -A "$UA" -o eff.html -w 'EFF %{http_code}\n' https://www.ethnicity-facts-figures.service.gov.uk/workforce-and-business/workforce-diversity/nhs-workforce/latest >> $R
-          pdftotext -layout nmc.pdf nmc.txt; pdftotext -layout gmc.pdf gmc.txt
+          for f in nmc gmc; do python3 -c "import pypdf,sys;r=pypdf.PdfReader(sys.argv[1]+'.pdf');open(sys.argv[1]+'.txt','w').write('\n'.join(p.extract_text() or '' for p in r.pages))" $f; done; file nmc.pdf gmc.pdf >> $R
           echo "== NMC" >> $R; grep -n -i -E "nigeria|212,109|24\.4|867,935|1,614|33\.8|1 April 2025|second largest" nmc.txt | head -40 >> $R
           echo "== GMC" >> $R; grep -n -i -E "138,405|42%|328,149|nigeria" gmc.txt | head -20 >> $R
           echo "== EFF" >> $R; sed 's/<[^>]*>/ /g' eff.html | grep -i -E "7\.4|10\.7|4\.4|black staff|nurses and health visitors|June 2022" | tr -s ' ' | head -20 >> $R
           cat $R
+          true
       - name: Commit
         run: |
           git config user.name "github-actions"
