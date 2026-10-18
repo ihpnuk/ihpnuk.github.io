@@ -9,21 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check links
+      - name: Verify sector stats
         run: |
-          mkdir -p linkcheck
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          mkdir -p linkcheck; R=linkcheck/stats.txt; rm -f $R
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-          rm -f linkcheck/result.txt; for u in https://www.tiktok.com/@ihpnuk https://ihpnuk.github.io/ https://doi.org/10.1227/01.neu.0000163407.92769.ed https://pmc.ncbi.nlm.nih.gov/articles/PMC1847931/ https://pmc.ncbi.nlm.nih.gov/articles/PMC8795841/ https://tdr.who.int/global-health-matters-podcast/tdr-podcast-guests/uche-amazigo https://royalsociety.org/people/ijeoma-uchegbu-36399 https://medicine.yale.edu/profile/onyema_ogbuagu/; do
-            code=$(curl -sL -A "$UA" -o /tmp/page.html -w '%{http_code} %{url_effective}' "$u")
-            has=$(grep -oi -m1 'ihpnuk' /tmp/page.html | head -1)
-            title=$(grep -o '<title[^>]*>[^<]*' /tmp/page.html | head -1 | sed 's/<title[^>]*>//')
-            echo "$u | $code | mentions-ihpnuk:${has:-no} | title:$title" >> linkcheck/result.txt
-          done
-          cat linkcheck/result.txt
+          curl -sL -A "$UA" -o nmc.pdf -w 'NMC %{http_code}\n' https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/0184ca-data-report-uk-web.pdf >> $R
+          curl -sL -A "$UA" -o gmc.pdf -w 'GMC %{http_code}\n' https://www.gmc-uk.org/cdn/documents/wfr25-report-251117_pdf-112967442.pdf >> $R
+          curl -sL -A "$UA" -o eff.html -w 'EFF %{http_code}\n' https://www.ethnicity-facts-figures.service.gov.uk/workforce-and-business/workforce-diversity/nhs-workforce/latest >> $R
+          pdftotext -layout nmc.pdf nmc.txt; pdftotext -layout gmc.pdf gmc.txt
+          echo "== NMC" >> $R; grep -n -i -E "nigeria|212,109|24\.4|867,935|1,614|33\.8|1 April 2025|second largest" nmc.txt | head -40 >> $R
+          echo "== GMC" >> $R; grep -n -i -E "138,405|42%|328,149|nigeria" gmc.txt | head -20 >> $R
+          echo "== EFF" >> $R; sed 's/<[^>]*>/ /g' eff.html | grep -i -E "7\.4|10\.7|4\.4|black staff|nurses and health visitors|June 2022" | tr -s ' ' | head -20 >> $R
+          cat $R
       - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
           git add linkcheck
-          git commit -m "Theme photo search" || echo nothing
+          git commit -m "Stats check" || echo nothing
           git push origin HEAD:photo-fetch
