@@ -10,20 +10,13 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Check live site
-        timeout-minutes: 5
+      - name: Check verification tag
+        timeout-minutes: 3
         run: |
           set +e
-          mkdir -p linkcheck; R=linkcheck/live.txt; : > $R
-          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0'
-          for u in https://ihpnuk.github.io/ https://ihpnuk.github.io/about.html https://ihpnuk.github.io/membership.html https://ihpnuk.github.io/news.html https://ihpnuk.github.io/contact.html https://ihpnuk.github.io/privacy.html https://ihpnuk.github.io/newsletters/bhm-2026.html https://ihpnuk.github.io/newsletters/IHPN-Black-History-Month-2026-newsletter.pdf https://ihpnuk.github.io/newsletters/newsletter.css https://ihpnuk.github.io/styles.css?v=4 https://ihpnuk.github.io/sitemap.xml https://ihpnuk.github.io/robots.txt https://ihpnuk.github.io/assets/newsletter/bhm-2026-cover.jpg https://ihpnuk.github.io/assets/newsletter/v16.jpg https://ihpnuk.github.io/assets/newsletter/eye-exam-kenya.jpg https://ihpnuk.github.io/assets/newsletter/malaria-test-rwanda.jpg https://ihpnuk.github.io/assets/newsletter/v10.jpg https://ihpnuk.github.io/assets/newsletter/v13.jpg https://ihpnuk.github.io/assets/newsletter/v25.jpg https://ihpnuk.github.io/assets/newsletter/v31.jpg https://ihpnuk.github.io/nonexistent-page https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalsnetworkukihpnukapplytojoin https://ico.org.uk/make-a-complaint/ https://www.tiktok.com/@ihpnuk https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/0184ca-data-report-uk-web.pdf https://www.ethnicity-facts-figures.service.gov.uk/workforce-and-business/workforce-diversity/nhs-workforce/latest https://doi.org/10.1227/01.neu.0000163407.92769.ed https://pmc.ncbi.nlm.nih.gov/articles/PMC1847931/ https://pmc.ncbi.nlm.nih.gov/articles/PMC8795841/ https://tdr.who.int/global-health-matters-podcast/tdr-podcast-guests/uche-amazigo https://royalsociety.org/people/ijeoma-uchegbu-36399 https://medicine.yale.edu/profile/onyema_ogbuagu/; do
-            code=$(curl -sL -m 30 -A "$UA" -o page.bin -w '%{http_code}' "$u")
-            echo "$code $u | $(grep -ao '<title>[^<]*' page.bin | head -1)" >> $R
-          done
-          curl -sL -m 30 https://ihpnuk.github.io/membership.html | grep -o 'cognitoforms.com/[a-z/]*' | head -2 >> $R
-          curl -sL -m 30 https://ihpnuk.github.io/news.html | grep -o 'newsletters/[A-Za-z0-9./-]*' | sort -u >> $R
-          curl -sL -m 30 https://ihpnuk.github.io/ | grep -c 'application/ld+json' >> $R
-          cat $R; true
+          mkdir -p linkcheck
+          sleep 20; curl -sL -m 30 -H 'Cache-Control: no-cache' 'https://ihpnuk.github.io/?nocache=1' | grep -o '<meta name="google-site-verification"[^>]*>' > linkcheck/gsv.txt
+          cat linkcheck/gsv.txt; true
       - name: Commit
         run: |
           git config user.name "github-actions"
