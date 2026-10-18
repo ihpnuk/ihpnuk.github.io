@@ -13,9 +13,9 @@ jobs:
         run: |
           set +e
           mkdir -p linkcheck
-          curl -sL -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0' -o /dev/null -w '%{http_code}\n' 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalnetworkihpnukapplytojoin' > linkcheck/form-status.txt
-          google-chrome --headless=new --no-sandbox --disable-gpu --window-size=430,6000 --virtual-time-budget=15000 --screenshot=linkcheck/form.png 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalnetworkihpnukapplytojoin'
-          google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=15000 --dump-dom 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalnetworkihpnukapplytojoin' | sed 's/<[^>]*>/ /g' | tr -s ' \n' | head -c 20000 > linkcheck/form-text.txt
+          curl -sL -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0' -o /dev/null -w '%{http_code}\n' 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalsnetworkukihpnukapplytojoin' > linkcheck/form-status.txt
+          google-chrome --headless=new --no-sandbox --disable-gpu --window-size=430,6000 --virtual-time-budget=15000 --screenshot=linkcheck/form.png 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalsnetworkukihpnukapplytojoin'
+          google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=15000 --dump-dom 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalsnetworkukihpnukapplytojoin' | sed 's/<[^>]*>/ /g' | tr -s ' \n' | head -c 20000 > linkcheck/form-text.txt
           cat linkcheck/form-status.txt; true
       - name: Commit
         run: |
