@@ -2,7 +2,6 @@ name: fetch-photos
 on:
   push:
     branches: [photo-fetch]
-  workflow_dispatch:
 permissions:
   contents: write
 jobs:
@@ -10,28 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Search Wikimedia Commons and download candidates
+      - name: Search Openverse and Wikidata
         run: |
-          set -e
-          mkdir -p photos
+          mkdir -p photos2
           UA="IHPN-UK-newsletter/1.0 (ihpnuk@outlook.com)"
-          for q in "Bennet Omalu" "Fabian Udekwu" "Uche Amazigo" "Ijeoma Uchegbu" "Onyema Ogbuagu"; do
+          for q in "Fabian Udekwu" "Uche Amazigo" "Onyema Ogbuagu"; do
             slug=$(echo "$q" | tr 'A-Z ' 'a-z-')
-            curl -sG -A "$UA" "https://commons.wikimedia.org/w/api.php" \
-              --data-urlencode "action=query" --data-urlencode "format=json" \
-              --data-urlencode "generator=search" --data-urlencode "gsrnamespace=6" \
-              --data-urlencode "gsrsearch=$q" --data-urlencode "gsrlimit=6" \
-              --data-urlencode "prop=imageinfo" --data-urlencode "iiprop=url|extmetadata|size|mime" \
-              --data-urlencode "iiurlwidth=900" > "photos/$slug.json"
-            jq -r '.query.pages // {} | to_entries[] | .value | select(.imageinfo[0].mime|test("image/(jpeg|png)")) | [.index, .title, .imageinfo[0].thumburl] | @tsv' "photos/$slug.json" | sort -n | head -4 | while IFS=$'\t' read idx title url; do
-              curl -sL -A "$UA" -o "photos/$slug-$idx.jpg" "$url" || true
+            curl -sG -A "$UA" "https://api.openverse.org/v1/images/" --data-urlencode "q=$q" --data-urlencode "page_size=10" > "photos2/$slug-openverse.json"
+            jq -r '.results[]? | [.id,.title,.license,.license_version,.creator,.source,.foreign_landing_url,.url] | @tsv' "photos2/$slug-openverse.json" | head -6 | nl > "photos2/$slug-openverse.tsv"
+            i=0; jq -r '.results[]?.url' "photos2/$slug-openverse.json" | head -6 | while read u; do i=$((i+1)); curl -sL -m 30 -A "$UA" -o "photos2/$slug-ov$i.jpg" "$u"; done
+            curl -sG -A "$UA" "https://www.wikidata.org/w/api.php" --data-urlencode "action=wbsearchentities" --data-urlencode "search=$q" --data-urlencode "language=en" --data-urlencode "format=json" > "photos2/$slug-wd.json"
+            for id in $(jq -r '.search[]?.id' "photos2/$slug-wd.json" | head -3); do
+              curl -s -A "$UA" "https://www.wikidata.org/wiki/Special:EntityData/$id.json" | jq -r --arg id $id '.entities[$id].claims.P18[]?.mainsnak.datavalue.value' >> "photos2/$slug-wd-images.txt"
             done
           done
-          ls -la photos
+          ls -la photos2; cat photos2/*.tsv photos2/*-wd-images.txt 2>/dev/null
       - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add photos
-          git commit -m "Fetched candidate photos" || echo nothing
+          git add photos2
+          git commit -m "Second photo search" || echo nothing
           git push origin HEAD:photo-fetch
