@@ -13,3 +13,7 @@ Assets: `assets/` holds the logo, crest, icons, and the intro video (compressed 
 
 ## Editing
 Text lives directly in the HTML files. Change the TikTok link or email by searching for `tiktok.com/@ihpnuk` or `ihpnuk@outlook.com`.
+
+## Adding news and newsletters
+- News: copy one `<article class="card news-item">` block in `news.html`, put it first, and change the date, title and text.
+- Newsletters: put the PDF in a `newsletters/` folder and replace the "first newsletter is on its way" card with a link to it.
