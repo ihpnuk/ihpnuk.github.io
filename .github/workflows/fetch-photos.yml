@@ -7,20 +7,31 @@ permissions:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-      - name: Check verification tag
-        timeout-minutes: 3
+      - name: Make British voice samples
+        timeout-minutes: 8
         run: |
           set +e
-          mkdir -p linkcheck
-          sleep 20; curl -sL -m 30 -H 'Cache-Control: no-cache' 'https://ihpnuk.github.io/?nocache=1' | grep -o '<meta name="google-site-verification"[^>]*>' > linkcheck/gsv.txt
-          cat linkcheck/gsv.txt; true
+          mkdir -p tts
+          pip install -q piper-tts
+          TXT="Our very first newsletter is here! This Black History Month, we celebrate five Igbo healthcare pioneers, and the numbers behind our community in UK healthcare. Are you an Igbo healthcare professional or student in the UK? Read it free, and apply to join in three minutes. Link in bio!"
+          B=https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_GB
+          for v in cori/high/en_GB-cori-high jenny_dioco/medium/en_GB-jenny_dioco-medium alan/medium/en_GB-alan-medium southern_english_female/low/en_GB-southern_english_female-low; do
+            n=$(basename $v)
+            curl -sL -m 60 -o $n.onnx $B/$v.onnx
+            curl -sL -m 30 -o $n.onnx.json $B/$v.onnx.json
+            d=$(dirname $v)
+            curl -sL -m 30 -o tts/$n.MODEL_CARD.txt $B/$d/MODEL_CARD
+            echo "$TXT" | timeout 120 piper -m $n.onnx -f tts/$n.wav
+            ls -la tts/$n.wav
+          done
+          true
       - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add linkcheck
-          git commit -m "Stats check" || echo nothing
+          git add tts
+          git commit -m "Voice samples" || echo nothing
           git push origin HEAD:photo-fetch
