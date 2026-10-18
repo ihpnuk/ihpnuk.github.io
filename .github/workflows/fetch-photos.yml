@@ -9,17 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download chosen photos
+      - name: Check links
         run: |
-          mkdir -p photos4
-          UA="IHPN-UK-newsletter/1.0 (ihpnuk@outlook.com)"
-          curl -sL -A "$UA" -o photos4/eye-exam-kenya.jpg "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAzL2ZsNzkzODIxODAwMi1pbWFnZS5qcGc.jpg"
-          curl -sL -A "$UA" -o photos4/malaria-test-rwanda.jpg "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAzL2ZsNTExMTIwNzgyMjEtaW1hZ2UuanBn.jpg"
-          ls -la photos4
+          mkdir -p linkcheck
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          for u in https://www.tiktok.com/@ihpnuk https://ihpnuk.github.io/ https://ihpnuk.github.io/news.html https://ihpnuk.github.io/membership.html https://ihpnuk.github.io/contact.html https://ihpnuk.github.io/about.html; do
+            code=$(curl -sL -A "$UA" -o /tmp/page.html -w '%{http_code} %{url_effective}' "$u")
+            has=$(grep -oi -m1 'ihpnuk' /tmp/page.html | head -1)
+            title=$(grep -o '<title[^>]*>[^<]*' /tmp/page.html | head -1 | sed 's/<title[^>]*>//')
+            echo "$u | $code | mentions-ihpnuk:${has:-no} | title:$title" >> linkcheck/result.txt
+          done
+          cat linkcheck/result.txt
       - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add photos4
+          git add linkcheck
           git commit -m "Theme photo search" || echo nothing
           git push origin HEAD:photo-fetch
