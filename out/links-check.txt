@@ -1,0 +1,15 @@
+200 https://ihpnuk.github.io/ <- https://ihpnuk.github.io/
+404 https://centralnicregistry.com/support/policies/dispute <- https://www.centralnicregistry.com/support/policies/dispute
+200 https://www.cloudflare.com/trust-hub/abuse-approach/ <- https://www.cloudflare.com/abuse/
+403 https://www.namecheap.com/legal/general/abuse-policy/ <- https://www.namecheap.com/legal/general/abuse-policy/
+200 https://www.gov.uk/search-for-trademark <- https://www.gov.uk/search-for-trademark
+200 https://www.gov.uk/how-to-register-a-trade-mark <- https://www.gov.uk/how-to-register-a-trade-mark
+200 https://www.ihpn.org.uk/ <- https://www.ihpn.org.uk/
+200 https://search.google.com/search-console/about <- https://search.google.com/search-console/about
+200 https://business.google.com/us/business-profile/ <- https://www.google.com/business/
+200 https://www.gov.uk/report-suspicious-emails-websites-phishing <- https://www.gov.uk/report-suspicious-emails-websites-phishing
+200 https://www.ncsc.gov.uk/collection/phishing-scams/report-scam-website <- https://www.ncsc.gov.uk/collection/phishing-scams/report-scam-website
+200 https://find-and-update.company-information.service.gov.uk/search/companies?q=Igbo+Healthcare <- https://find-and-update.company-information.service.gov.uk/search/companies?q=Igbo+Healthcare
+200 https://find-and-update.company-information.service.gov.uk/search/companies?q=IHPN <- https://find-and-update.company-information.service.gov.uk/search/companies?q=IHPN
+ch1.html IGBO PROFESSIONAL HEALTHCARE WORKERS SOCIALCLUB 13220499 - Dissolved on 26 July 2022 8 Osborne Street, Rochdale, Uk, United Kingdom, OL11 1NW /company/13220499
+ch2.html INDEPENDENT HEALTHCARE PROVIDERS NETWORK (IHPN) LIMITED 07513072 - Incorporated on 1 February 2011 Thomas House, 84 Eccleston Square, London, England, SW1V 1PX /company/07513072
