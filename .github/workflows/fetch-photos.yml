@@ -9,22 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Search free theme photos
+      - name: Download chosen photos
         run: |
-          mkdir -p photos3
+          mkdir -p photos4
           UA="IHPN-UK-newsletter/1.0 (ihpnuk@outlook.com)"
-          n=0
-          for q in "black nurse" "african doctor" "nigerian nurses" "black female doctor" "nurses team hospital africa" "medical students nigeria" "black doctor stethoscope" "community health worker africa"; do
-            slug=$(echo "$q" | tr 'A-Z ' 'a-z-')
-            curl -sG -A "$UA" "https://api.openverse.org/v1/images/" --data-urlencode "q=$q" --data-urlencode "page_size=12" --data-urlencode "license=cc0,pdm,by,by-sa" --data-urlencode "category=photograph" > "photos3/$slug.json"
-            jq -r --arg s "$slug" '.results[]? | [$s,.id,.license,.license_version,(.creator//""),.source,.foreign_landing_url,(.width|tostring),(.height|tostring),.url,(.title//"")] | @tsv' "photos3/$slug.json" >> photos3/index.tsv
-          done
-          cut -f2,10 photos3/index.tsv | awk '!seen[$1]++' | head -60 | while IFS=$'\t' read id url; do curl -sL -m 30 -A "$UA" -o "photos3/$id.jpg" "https://api.openverse.org/v1/images/$id/thumb/"; done
-          wc -l photos3/index.tsv; ls photos3 | wc -l
+          curl -sL -A "$UA" -o photos4/eye-exam-kenya.jpg "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAzL2ZsNzkzODIxODAwMi1pbWFnZS5qcGc.jpg"
+          curl -sL -A "$UA" -o photos4/malaria-test-rwanda.jpg "https://images.rawpixel.com/editor_1024/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAzL2ZsNTExMTIwNzgyMjEtaW1hZ2UuanBn.jpg"
+          ls -la photos4
       - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add photos3
+          git add photos4
           git commit -m "Theme photo search" || echo nothing
           git push origin HEAD:photo-fetch
