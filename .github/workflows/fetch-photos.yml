@@ -1,0 +1,37 @@
+name: fetch-photos
+on:
+  push:
+    branches: [photo-fetch]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Search Wikimedia Commons and download candidates
+        run: |
+          set -e
+          mkdir -p photos
+          UA="IHPN-UK-newsletter/1.0 (ihpnuk@outlook.com)"
+          for q in "Bennet Omalu" "Fabian Udekwu" "Uche Amazigo" "Ijeoma Uchegbu" "Onyema Ogbuagu"; do
+            slug=$(echo "$q" | tr 'A-Z ' 'a-z-')
+            curl -sG -A "$UA" "https://commons.wikimedia.org/w/api.php" \
+              --data-urlencode "action=query" --data-urlencode "format=json" \
+              --data-urlencode "generator=search" --data-urlencode "gsrnamespace=6" \
+              --data-urlencode "gsrsearch=$q" --data-urlencode "gsrlimit=6" \
+              --data-urlencode "prop=imageinfo" --data-urlencode "iiprop=url|extmetadata|size|mime" \
+              --data-urlencode "iiurlwidth=900" > "photos/$slug.json"
+            jq -r '.query.pages // {} | to_entries[] | .value | select(.imageinfo[0].mime|test("image/(jpeg|png)")) | [.index, .title, .imageinfo[0].thumburl] | @tsv' "photos/$slug.json" | sort -n | head -4 | while IFS=$'\t' read idx title url; do
+              curl -sL -A "$UA" -o "photos/$slug-$idx.jpg" "$url" || true
+            done
+          done
+          ls -la photos
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add photos
+          git commit -m "Fetched candidate photos" || echo nothing
+          git push origin HEAD:photo-fetch
