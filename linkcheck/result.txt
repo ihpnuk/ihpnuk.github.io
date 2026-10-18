@@ -1,8 +1,11 @@
-https://www.tiktok.com/@ihpnuk | 200 https://www.tiktok.com/@ihpnuk | mentions-ihpnuk:ihpnuk | title:TikTok - Make Your Day
-https://ihpnuk.github.io/ | 200 https://ihpnuk.github.io/ | mentions-ihpnuk:ihpnuk | title:IHPN-UK | Igbo Healthcare Professionals Network UK
-https://doi.org/10.1227/01.neu.0000163407.92769.ed | 200 https://www.ovid.com/jnls/neurosurgery/abstract/10.1227/01.neu.0000163407.92769.ed~chronic-traumatic-encephalopathy-in-a-national-football?redirectionsource=fulltextview | mentions-ihpnuk:no | title:Chronic Traumatic Encephalopathy in a National... : Neurosurgery
-https://pmc.ncbi.nlm.nih.gov/articles/PMC1847931/ | 200 https://pmc.ncbi.nlm.nih.gov/articles/PMC1847931/ | mentions-ihpnuk:no | title:
-https://pmc.ncbi.nlm.nih.gov/articles/PMC8795841/ | 200 https://pmc.ncbi.nlm.nih.gov/articles/PMC8795841/ | mentions-ihpnuk:no | title:
-https://tdr.who.int/global-health-matters-podcast/tdr-podcast-guests/uche-amazigo | 200 https://tdr.who.int/global-health-matters-podcast/tdr-podcast-guests/uche-amazigo | mentions-ihpnuk:no | title:
-https://royalsociety.org/people/ijeoma-uchegbu-36399 | 200 https://royalsociety.org/people/ijeoma-uchegbu-36399/ | mentions-ihpnuk:no | title:Dame Ijeoma Uchegbu | Royal Society
-https://medicine.yale.edu/profile/onyema_ogbuagu/ | 200 https://medicine.yale.edu/profile/onyema-ogbuagu/ | mentions-ihpnuk:no | title:Onyema Ogbuagu, MBBCh, FACP, MD, FIDSA | Yale School of Medicine
+https://www.tiktok.com/@ihpnuk | 200 | HTML document, ASCII text, wit | TikTok - Make Your Day
+https://ihpnuk.github.io/ | 200 | HTML document, ASCII text, wit | IHPN-UK | Igbo Healthcare Professionals Network UK
+https://doi.org/10.1227/01.neu.0000163407.92769.ed | 200 | HTML document, ASCII text, wit | Chronic Traumatic Encephalopathy in a National... : Neurosurgery
+https://pmc.ncbi.nlm.nih.gov/articles/PMC1847931/ | 200 | HTML document, Unicode text, U | 
+https://pmc.ncbi.nlm.nih.gov/articles/PMC8795841/ | 200 | HTML document, Unicode text, U | 
+https://tdr.who.int/global-health-matters-podcast/tdr-podcast-guests/uche-amazigo | 200 | JavaScript source, Unicode tex | 
+https://royalsociety.org/people/ijeoma-uchegbu-36399 | 200 | HTML document, Unicode text, U | Dame Ijeoma Uchegbu | Royal Society
+https://medicine.yale.edu/profile/onyema_ogbuagu/ | 200 | HTML document, Unicode text, U | Onyema Ogbuagu, MBBCh, FACP, MD, FIDSA | Yale School of Medicine
+https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/0184ca-data-report-uk-web.pdf | 200 | PDF document, version 1.7, 8 p | 
+https://www.gmc-uk.org/about/what-we-do-and-why/data-and-research/the-state-of-medical-education-and-practice-in-the-uk/workforce-report | 403 | HTML document, ASCII text, wit | Attention Required! | Cloudflare
+https://www.ethnicity-facts-figures.service.gov.uk/workforce-and-business/workforce-diversity/nhs-workforce/latest | 200 | JavaScript source, Unicode tex | NHS workforce - GOV.UK Ethnicity facts and figures
