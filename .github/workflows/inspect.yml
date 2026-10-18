@@ -9,61 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Inspect (read-only)
+      - name: Verify links
         run: |
           set +e
-          sudo apt-get install -y -qq whois dnsutils >/dev/null 2>&1
-          mkdir -p out; R=out/report.txt; rm -f $R
+          mkdir -p out; R=out/links-check.txt; rm -f $R
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-          for h in ihpnuk.com.de www.ihpnuk.com.de com.de ihpnuk.de ihpnuk.com ihpnuk.co.uk ihpnuk.org ihpnuk.org.uk ihpn.co.uk ihpn.org.uk ihpnuk.uk; do
-            echo "== DNS $h" >> $R
-            for t in A AAAA CNAME NS MX TXT; do echo "$t: $(dig +short $h $t | tr '\n' ' ')" >> $R; done
+          for u in https://ihpnuk.github.io/ https://www.centralnicregistry.com/support/policies/dispute https://www.cloudflare.com/abuse/ https://www.namecheap.com/legal/general/abuse-policy/ https://www.gov.uk/search-for-trademark https://www.gov.uk/how-to-register-a-trade-mark https://www.ihpn.org.uk/ https://search.google.com/search-console/about https://www.google.com/business/ https://www.gov.uk/report-suspicious-emails-websites-phishing https://www.ncsc.gov.uk/collection/phishing-scams/report-scam-website "https://find-and-update.company-information.service.gov.uk/search/companies?q=Igbo+Healthcare" "https://find-and-update.company-information.service.gov.uk/search/companies?q=IHPN"; do
+            curl -sS -m 25 -L -A "$UA" -o /dev/null -w "%{http_code} %{url_effective} <- $u\n" "$u" >> $R 2>&1
           done
-          echo "== WHOIS com.de (DENIC)" >> $R; whois -h whois.denic.de com.de >> $R 2>&1
-          echo "== WHOIS ihpnuk.com.de (CentralNic)" >> $R; whois -h whois.centralnic.com ihpnuk.com.de >> $R 2>&1
-          echo "== WHOIS ihpnuk.com.de (default)" >> $R; whois ihpnuk.com.de >> $R 2>&1
-          for h in ihpnuk.com ihpnuk.co.uk ihpnuk.org ihpnuk.org.uk ihpn.org.uk ihpnuk.uk; do echo "== WHOIS $h" >> $R; whois $h 2>&1 | grep -v -E '^\s*$|^%|^#' | head -40 >> $R; done
-          IP=$(dig +short ihpnuk.com.de A | tail -1); echo "== IP $IP" >> $R
-          [ -n "$IP" ] && { dig +short -x $IP >> $R; whois $IP | grep -i -E 'orgname|org-name|netname|descr|country|abuse' | head -20 >> $R; }
-          for u in https://ihpnuk.com.de/ http://ihpnuk.com.de/ https://www.ihpnuk.com.de/; do
-            echo "== HEAD $u" >> $R; curl -sS -m 25 -L -A "$UA" -D - -o /dev/null -w 'final=%{url_effective} code=%{http_code}\n' "$u" >> $R 2>&1
-          done
-          curl -sS -m 25 -L -A "$UA" -o out/page.html https://ihpnuk.com.de/ 2>>$R
-          echo "== TLS cert" >> $R; echo | openssl s_client -connect ihpnuk.com.de:443 -servername ihpnuk.com.de 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName >> $R 2>&1
-          echo "== crt.sh" >> $R; curl -sS -m 40 "https://crt.sh/?q=%25.ihpnuk.com.de&output=json" | python3 -c "import json,sys;d=json.load(sys.stdin);[print(x['not_before'],x['issuer_name'][:60],x['name_value'].replace(chr(10),',')) for x in d[:30]]" >> $R 2>&1
-          for p in robots.txt sitemap.xml about.html membership.html contact.html; do echo "== $p" >> $R; curl -sS -m 20 -L -A "$UA" -o out/p_$p -w '%{http_code} %{size_download}\n' https://ihpnuk.com.de/$p >> $R 2>&1; done
-          echo "== Wayback" >> $R; curl -sS -m 30 "https://web.archive.org/cdx/search/cdx?url=ihpnuk.com.de*&limit=20" >> $R 2>&1
-          echo "== Companies House IHPN" >> $R; curl -sS -m 30 -A "$UA" "https://find-and-update.company-information.service.gov.uk/search/companies?q=IHPN" | sed 's/<[^>]*>/ /g' | tr -s ' \n' | grep -i -E -A3 "ihpn|healthcare" | head -60 >> $R
-          echo "== Companies House Igbo Healthcare" >> $R; curl -sS -m 30 -A "$UA" "https://find-and-update.company-information.service.gov.uk/search/companies?q=Igbo+Healthcare" | sed 's/<[^>]*>/ /g' | tr -s ' \n' | grep -i -E -A3 "igbo|healthcare" | head -40 >> $R
-          echo "== ihpn.org.uk home" >> $R; curl -sS -m 25 -L -A "$UA" https://www.ihpn.org.uk/ | grep -o -i -E '<title>[^<]*|trade ?mark[^<]{0,120}|registered[^<]{0,120}' | head -10 >> $R
-          npm i -s playwright@1.47.2 >/dev/null 2>&1; npx -y playwright@1.47.2 install --with-deps chromium >/dev/null 2>&1
-          cat > shot.mjs <<'JS'
-          import { chromium } from 'playwright';
-          import fs from 'fs';
-          const b = await chromium.launch();
-          for (const [name, vp] of [['desktop',{width:1366,height:900}],['phone',{width:390,height:844}]]) {
-            const p = await b.newPage({ viewport: vp });
-            const reqs = new Set();
-            p.on('request', r => reqs.add(r.url()));
-            try { await p.goto('https://ihpnuk.com.de/', { waitUntil: 'networkidle', timeout: 45000 }); } catch (e) { console.log('goto', e.message); }
-            await p.waitForTimeout(3000);
-            await p.screenshot({ path: `out/${name}.png`, fullPage: true });
-            if (name === 'desktop') {
-              fs.writeFileSync('out/rendered.html', await p.content());
-              fs.writeFileSync('out/text.txt', await p.evaluate(() => document.body ? document.body.innerText : ''));
-              fs.writeFileSync('out/links.txt', await p.evaluate(() => [...document.querySelectorAll('a,form,iframe,script[src],img')].map(e => e.tagName+' '+(e.href||e.action||e.src||'')+' '+(e.innerText||e.alt||'').slice(0,60).replace(/\s+/g,' ')).join('\n')));
-              fs.writeFileSync('out/requests.txt', [...reqs].join('\n'));
-              console.log('final url', p.url(), 'title', await p.title());
-            }
-          }
-          await b.close();
-          JS
-          node shot.mjs >> $R 2>&1
+          curl -sS -m 30 -A "$UA" "https://find-and-update.company-information.service.gov.uk/search/companies?q=Igbo+Healthcare" > ch1.html
+          curl -sS -m 30 -A "$UA" "https://find-and-update.company-information.service.gov.uk/search/companies?q=IHPN" > ch2.html
+          python3 - >> $R <<'PY'
+          import re,html
+          for f in ['ch1.html','ch2.html']:
+              s=open(f).read()
+              for m in re.finditer(r'<li class="type-company">(.*?)</li>',s,re.S):
+                  t=html.unescape(re.sub(r'<[^>]+>',' ',m.group(1))); t=' '.join(t.split())
+                  h=re.search(r'href="(/company/[^"]+)"',m.group(1))
+                  if re.search(r'IHPN|HEALTH',t,re.I): print(f,t,h.group(1) if h else '')
+          PY
           cat $R; true
       - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add out
+          git add out/links-check.txt
           git commit -m "Look-alike inspection results" || echo nothing
           git push origin HEAD:claude/project-thread-98q8y6
