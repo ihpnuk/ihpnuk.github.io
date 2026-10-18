@@ -9,25 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Search Openverse and Wikidata
+      - name: Search free theme photos
         run: |
-          mkdir -p photos2
+          mkdir -p photos3
           UA="IHPN-UK-newsletter/1.0 (ihpnuk@outlook.com)"
-          for q in "Fabian Udekwu" "Uche Amazigo" "Onyema Ogbuagu"; do
+          n=0
+          for q in "black nurse" "african doctor" "nigerian nurses" "black female doctor" "nurses team hospital africa" "medical students nigeria" "black doctor stethoscope" "community health worker africa"; do
             slug=$(echo "$q" | tr 'A-Z ' 'a-z-')
-            curl -sG -A "$UA" "https://api.openverse.org/v1/images/" --data-urlencode "q=$q" --data-urlencode "page_size=10" > "photos2/$slug-openverse.json"
-            jq -r '.results[]? | [.id,.title,.license,.license_version,.creator,.source,.foreign_landing_url,.url] | @tsv' "photos2/$slug-openverse.json" | head -6 | nl > "photos2/$slug-openverse.tsv"
-            i=0; jq -r '.results[]?.url' "photos2/$slug-openverse.json" | head -6 | while read u; do i=$((i+1)); curl -sL -m 30 -A "$UA" -o "photos2/$slug-ov$i.jpg" "$u"; done
-            curl -sG -A "$UA" "https://www.wikidata.org/w/api.php" --data-urlencode "action=wbsearchentities" --data-urlencode "search=$q" --data-urlencode "language=en" --data-urlencode "format=json" > "photos2/$slug-wd.json"
-            for id in $(jq -r '.search[]?.id' "photos2/$slug-wd.json" | head -3); do
-              curl -s -A "$UA" "https://www.wikidata.org/wiki/Special:EntityData/$id.json" | jq -r --arg id $id '.entities[$id].claims.P18[]?.mainsnak.datavalue.value' >> "photos2/$slug-wd-images.txt"
-            done
+            curl -sG -A "$UA" "https://api.openverse.org/v1/images/" --data-urlencode "q=$q" --data-urlencode "page_size=12" --data-urlencode "license=cc0,pdm,by,by-sa" --data-urlencode "category=photograph" > "photos3/$slug.json"
+            jq -r --arg s "$slug" '.results[]? | [$s,.id,.license,.license_version,(.creator//""),.source,.foreign_landing_url,(.width|tostring),(.height|tostring),.url,(.title//"")] | @tsv' "photos3/$slug.json" >> photos3/index.tsv
           done
-          ls -la photos2; cat photos2/*.tsv photos2/*-wd-images.txt 2>/dev/null
+          cut -f2,10 photos3/index.tsv | awk '!seen[$1]++' | head -60 | while IFS=$'\t' read id url; do curl -sL -m 30 -A "$UA" -o "photos3/$id.jpg" "https://api.openverse.org/v1/images/$id/thumb/"; done
+          wc -l photos3/index.tsv; ls photos3 | wc -l
       - name: Commit
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add photos2
-          git commit -m "Second photo search" || echo nothing
+          git add photos3
+          git commit -m "Theme photo search" || echo nothing
           git push origin HEAD:photo-fetch
