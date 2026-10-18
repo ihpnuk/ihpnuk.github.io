@@ -9,17 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check links
+      - name: Check form
         run: |
           set +e
-          mkdir -p linkcheck; R=linkcheck/result.txt; : > $R
-          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
-          for u in https://www.tiktok.com/@ihpnuk https://ihpnuk.github.io/ https://doi.org/10.1227/01.neu.0000163407.92769.ed https://pmc.ncbi.nlm.nih.gov/articles/PMC1847931/ https://pmc.ncbi.nlm.nih.gov/articles/PMC8795841/ https://tdr.who.int/global-health-matters-podcast/tdr-podcast-guests/uche-amazigo https://royalsociety.org/people/ijeoma-uchegbu-36399 https://medicine.yale.edu/profile/onyema_ogbuagu/ https://www.nmc.org.uk/globalassets/sitedocuments/data-reports/2026/0184ca-data-report-uk-web.pdf https://www.gmc-uk.org/about/what-we-do-and-why/data-and-research/the-state-of-medical-education-and-practice-in-the-uk/workforce-report https://www.ethnicity-facts-figures.service.gov.uk/workforce-and-business/workforce-diversity/nhs-workforce/latest; do
-            code=$(curl -sL -A "$UA" -H 'Accept-Language: en-GB' -o page.bin -w '%{http_code}' "$u")
-            title=$(grep -ao '<title[^>]*>[^<]*' page.bin | head -1 | sed 's/<title[^>]*>//')
-            echo "$u | $code | $(file -b page.bin | cut -c1-30) | $title" >> $R
-          done
-          cat $R; true
+          mkdir -p linkcheck
+          curl -sL -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0' -o /dev/null -w '%{http_code}\n' 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalnetworkihpnukapplytojoin' > linkcheck/form-status.txt
+          google-chrome --headless=new --no-sandbox --disable-gpu --window-size=430,6000 --virtual-time-budget=15000 --screenshot=linkcheck/form.png 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalnetworkihpnukapplytojoin'
+          google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=15000 --dump-dom 'https://www.cognitoforms.com/igbohealthcareprofessionalsnetwork/igbohealthcareprofessionalnetworkihpnukapplytojoin' | sed 's/<[^>]*>/ /g' | tr -s ' \n' | head -c 20000 > linkcheck/form-text.txt
+          cat linkcheck/form-status.txt; true
       - name: Commit
         run: |
           git config user.name "github-actions"
