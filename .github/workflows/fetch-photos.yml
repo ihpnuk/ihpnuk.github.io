@@ -13,7 +13,7 @@ jobs:
         run: |
           mkdir -p linkcheck
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-          for u in https://www.tiktok.com/@ihpnuk https://ihpnuk.github.io/ https://ihpnuk.github.io/news.html https://ihpnuk.github.io/membership.html https://ihpnuk.github.io/contact.html https://ihpnuk.github.io/about.html; do
+          rm -f linkcheck/result.txt; for u in https://www.tiktok.com/@ihpnuk https://ihpnuk.github.io/ https://doi.org/10.1227/01.neu.0000163407.92769.ed https://pmc.ncbi.nlm.nih.gov/articles/PMC1847931/ https://pmc.ncbi.nlm.nih.gov/articles/PMC8795841/ https://tdr.who.int/global-health-matters-podcast/tdr-podcast-guests/uche-amazigo https://royalsociety.org/people/ijeoma-uchegbu-36399 https://medicine.yale.edu/profile/onyema_ogbuagu/; do
             code=$(curl -sL -A "$UA" -o /tmp/page.html -w '%{http_code} %{url_effective}' "$u")
             has=$(grep -oi -m1 'ihpnuk' /tmp/page.html | head -1)
             title=$(grep -o '<title[^>]*>[^<]*' /tmp/page.html | head -1 | sed 's/<title[^>]*>//')
