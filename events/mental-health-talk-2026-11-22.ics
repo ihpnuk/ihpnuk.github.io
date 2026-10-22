@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IHPN-UK//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:mental-health-talk-20261122@ihpnuk.github.io
+DTSTAMP:20261022T180000Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:IHPN-UK mental health talk
+DESCRIPTION:Talk from the Igbo Healthcare Professionals Network UK. Time and joining details to follow. Register your interest: ihpnuk@outlook.com
+URL:https://ihpnuk.github.io/news.html#events
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
