@@ -25,8 +25,8 @@ jobs:
             title=$(grep -oE '<title>[^<]+' page.html | head -1 | sed 's/<title>//')
             echo "$id | $url | $title" >> broll/log.txt
             if [ -z "$url" ]; then curl -sL -A "$UA" -m 120 "https://www.pexels.com/download/video/$id/" -o raw.mp4; else curl -sL -A "$UA" -m 120 "$url" -o raw.mp4; fi
-            ffmpeg -loglevel error -y -i raw.mp4 -t 8 -an -vf "scale='if(gt(iw,ih),-2,720)':'if(gt(iw,ih),720,-2)'" -c:v libx264 -crf 23 -preset veryfast broll/clips/$id.mp4
-            ffmpeg -loglevel error -y -ss 2 -i broll/clips/$id.mp4 -frames:v 1 -vf scale=480:-2 broll/clips/$id.jpg
+            ffmpeg -nostdin -loglevel error -y -i raw.mp4 -t 8 -an -vf "scale='if(gt(iw,ih),-2,720)':'if(gt(iw,ih),720,-2)'" -c:v libx264 -crf 23 -preset veryfast broll/clips/$id.mp4
+            ffmpeg -nostdin -loglevel error -y -ss 2 -i broll/clips/$id.mp4 -frames:v 1 -vf scale=480:-2 broll/clips/$id.jpg
             ls -la broll/clips/$id.mp4 >> broll/log.txt 2>&1
           done < broll/ids.txt
           true
