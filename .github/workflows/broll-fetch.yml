@@ -1,0 +1,39 @@
+name: broll-fetch
+on:
+  push:
+    branches: [claude/project-thread-9ivh81]
+    paths: [broll/ids.txt]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch Pexels clips
+        run: |
+          set +e
+          sudo apt-get -qq install -y ffmpeg >/dev/null
+          mkdir -p broll/clips
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          while read id; do
+            [ -z "$id" ] && continue
+            curl -sL -A "$UA" -m 40 "https://www.pexels.com/video/$id/" -o page.html
+            url=$(grep -oE "https://videos\.pexels\.com/video-files/$id/[^\"' ]+\.mp4" page.html | grep -E "hd_(1080|1920|720|1280)" | head -1)
+            [ -z "$url" ] && url=$(grep -oE "https://videos\.pexels\.com/video-files/$id/[^\"' ]+\.mp4" page.html | head -1)
+            title=$(grep -oE '<title>[^<]+' page.html | head -1 | sed 's/<title>//')
+            echo "$id | $url | $title" >> broll/log.txt
+            if [ -z "$url" ]; then curl -sL -A "$UA" -m 120 "https://www.pexels.com/download/video/$id/" -o raw.mp4; else curl -sL -A "$UA" -m 120 "$url" -o raw.mp4; fi
+            ffmpeg -loglevel error -y -i raw.mp4 -t 8 -an -vf "scale='if(gt(iw,ih),-2,720)':'if(gt(iw,ih),720,-2)'" -c:v libx264 -crf 23 -preset veryfast broll/clips/$id.mp4
+            ffmpeg -loglevel error -y -ss 2 -i broll/clips/$id.mp4 -frames:v 1 -vf scale=480:-2 broll/clips/$id.jpg
+            ls -la broll/clips/$id.mp4 >> broll/log.txt 2>&1
+          done < broll/ids.txt
+          true
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add broll
+          git commit -m "B-roll clips" || echo nothing
+          git push origin HEAD:claude/project-thread-9ivh81
