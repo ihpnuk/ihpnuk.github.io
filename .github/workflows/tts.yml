@@ -19,6 +19,7 @@ jobs:
             mkdir -p tts/$n; i=1
             while IFS= read -r line; do echo "$line" | piper -m $n.onnx --length_scale 1.05 --sentence_silence 0.25 -f tts/$n/l$i.wav </dev/null 2>/dev/null || echo "$line" | piper -m $n.onnx -f tts/$n/l$i.wav; i=$((i+1)); done < tts/lines.txt
           done
+          sudo apt-get -qq install -y espeak-ng >/dev/null; for w in 'Ro' 'R O' 'R-O' 'I H P N U K' 'IHPN-UK'; do echo "$w => $(espeak-ng -v en-gb -q -x "$w")" >> tts/phonemes.txt; done
           ls -laR tts
       - run: |
           git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
