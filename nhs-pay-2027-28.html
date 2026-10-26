@@ -47,6 +47,7 @@
 .bar-track{background:var(--tint);border-radius:6px;height:30px}
 .bar{height:30px;border-radius:6px;background:var(--green);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:.92rem}
 .cal-grid .ls{display:none}
+.bar.cpi{background:repeating-linear-gradient(135deg,#4d5b52,#4d5b52 7px,#5d6b62 7px,#5d6b62 14px)}
 .bar.plan{background:var(--gold);color:var(--green-ink)}
 @media (max-width:480px){.bar-row{grid-template-columns:1fr;gap:4px}.cal-grid .day{min-height:58px;padding:4px}.cal-grid .day small{font-size:.72rem}.cal-grid .lf{display:none}.cal-grid .ls{display:inline}}
 </style>
@@ -110,12 +111,13 @@
       <article class="card">
         <h2 style="font-size:1.4rem">What 2.4% looks like</h2>
         <p>On a salary of &pound;30,000, a 2.4% rise is &pound;720 a year before tax and deductions, or about &pound;60 a month. On &pound;50,000 it is &pound;1,200 a year, or about &pound;100 a month.</p>
-        <figure class="bars" role="img" aria-label="Bar chart of NHS pay rises in England: 3.5% headline for doctors in 2026/27, 3.3% for Agenda for Change staff in 2026/27, and 2.4% proposed for 2027/28. Source: Department of Health and Social Care.">
-          <figcaption style="font-weight:700;color:var(--green);margin-bottom:6px">NHS pay rises in England</figcaption>
+        <figure class="bars" role="img" aria-label="Bar chart of NHS pay rises in England: 3.5% headline for doctors in 2026/27, 3.3% for Agenda for Change staff in 2026/27, and 2.4% proposed for 2027/28, compared with inflation (CPI) of 3.5% in the 12 months to September 2026. Sources: Department of Health and Social Care and the Office for National Statistics.">
+          <figcaption style="font-weight:700;color:var(--green);margin-bottom:6px">NHS pay rises in England, and inflation</figcaption>
           <div class="bar-row"><span>Doctors 2026/27 (headline)</span><div class="bar-track"><div class="bar" style="width:100%">3.5%</div></div></div>
           <div class="bar-row"><span>Agenda for Change 2026/27</span><div class="bar-track"><div class="bar" style="width:94.3%">3.3%</div></div></div>
           <div class="bar-row"><span>Proposed 2027/28 (both groups)</span><div class="bar-track"><div class="bar plan" style="width:68.6%">2.4%</div></div></div>
-          <p style="font-size:.82rem;color:var(--muted);margin:6px 0 0">Source: Department of Health and Social Care. Green: awarded. Gold: proposed.</p>
+          <div class="bar-row"><span>Inflation (CPI), year to Sept 2026</span><div class="bar-track"><div class="bar cpi" style="width:100%">3.5%</div></div></div>
+          <p style="font-size:.82rem;color:var(--muted);margin:6px 0 0">Green: awarded. Gold: proposed. Striped: latest inflation, which shows how fast prices are rising now; inflation for 2027/28 is not yet known. Sources: Department of Health and Social Care; <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/september2026" target="_blank" rel="noopener">ONS, 21 October 2026</a>.</p>
         </figure>
         <p>This year (2026/27) Agenda for Change staff in England received 3.3% and doctors a headline 3.5%. <a href="https://healthmedia.blog.gov.uk/2026/03/26/nhs-pay-awards-for-2026-and-resident-doctor-strikes-everything-you-need-to-know" target="_blank" rel="noopener">2026/27 awards explained by DHSC&nbsp;&rarr;</a></p>
       </article>
