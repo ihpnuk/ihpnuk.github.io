@@ -267,3 +267,13 @@ section{padding:72px 0}
 .mag>.news-item:nth-child(n+5){position:relative}
 .mag>.news-item:nth-child(5){margin-top:56px}
 .mag>.news-item:nth-child(5)::before{content:"Earlier stories";position:absolute;top:-46px;left:0;font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:1.3rem;color:var(--green)}
+/* Whole news card is clickable (stretched link) */
+.news-item{position:relative;transition:transform .15s,box-shadow .15s}
+.news-item a::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:1}
+.news-item:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(1,53,30,.16)}
+.news-item:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.news-item:has(a:focus-visible){outline:3px solid var(--gold);outline-offset:3px}
+.news-item a:focus-visible{outline:none}
+@media (prefers-reduced-motion:reduce){.news-item:hover{transform:none}}
+.news-item .ai-tag{pointer-events:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
