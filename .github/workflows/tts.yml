@@ -1,0 +1,25 @@
+name: tts
+on:
+  push:
+    branches: [claude/project-thread-9ivh81]
+    paths: [tts/lines.txt]
+permissions:
+  contents: write
+jobs:
+  tts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          pip install -q piper-tts
+          B=https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_GB
+          for v in cori/high/en_GB-cori-high alan/medium/en_GB-alan-medium; do
+            n=$(basename $v); curl -sL -m 90 -o $n.onnx $B/$v.onnx; curl -sL -m 30 -o $n.onnx.json $B/$v.onnx.json
+            mkdir -p tts/$n; i=1
+            while IFS= read -r line; do echo "$line" | piper -m $n.onnx --length_scale 1.05 --sentence_silence 0.25 -f tts/$n/l$i.wav </dev/null 2>/dev/null || echo "$line" | piper -m $n.onnx -f tts/$n/l$i.wav; i=$((i+1)); done < tts/lines.txt
+          done
+          ls -laR tts
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
+          git add tts; git commit -m "TTS lines" || true; git push origin HEAD:claude/project-thread-9ivh81
