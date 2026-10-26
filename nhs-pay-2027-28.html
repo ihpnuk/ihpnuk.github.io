@@ -12,7 +12,11 @@
 <meta property="og:url" content="https://ihpnuk.github.io/nhs-pay-2027-28.html">
 <meta property="og:site_name" content="Igbo Healthcare Professionals Network UK (IHPN-UK)">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://ihpnuk.github.io/assets/og.png">
+<meta property="og:image" content="https://ihpnuk.github.io/assets/news/doctors-strikes-nov-2026.png">
+<meta property="og:image:alt" content="Calendar of doctors&rsquo; strike days in November 2026 in England and Northern Ireland">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +24,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css?v=9">
+<style>
+.cal{margin:18px 0 8px}
+.cal-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.cal-head strong{font-family:"Playfair Display",Georgia,serif;font-size:1.15rem;color:var(--green)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.cal-grid .dow{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);text-align:center}
+.cal-grid .day{border:1px solid var(--line);border-radius:8px;min-height:64px;padding:5px 6px;background:#fff;font-weight:700;color:var(--ink);font-size:.95rem;display:flex;flex-direction:column;justify-content:space-between}
+.cal-grid .day small{font-size:.68rem;font-weight:700;line-height:1.15}
+.cal-grid .eng{background:var(--gold);border-color:var(--gold);color:var(--green-ink)}
+.cal-grid .ni{background:var(--green);border-color:var(--green);color:#fff}
+.cal-key{display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem;margin-top:10px;color:var(--ink)}
+.cal-key span::before{content:"";display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px}
+.cal-key .k-eng::before{background:var(--gold)}
+.cal-key .k-ni::before{background:var(--green)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.tile{display:flex;gap:12px;align-items:flex-start;background:var(--tint);border-radius:12px;padding:14px}
+.tile svg{flex:0 0 40px}
+.tile p{margin:0}
+.bars{margin:18px 0 6px}
+.bar-row{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;margin:8px 0;font-size:.92rem}
+.bar-track{background:var(--tint);border-radius:6px;height:30px}
+.bar{height:30px;border-radius:6px;background:var(--green);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:.92rem}
+.cal-grid .ls{display:none}
+.bar.plan{background:var(--gold);color:var(--green-ink)}
+@media (max-width:480px){.bar-row{grid-template-columns:1fr;gap:4px}.cal-grid .day{min-height:58px;padding:4px}.cal-grid .day small{font-size:.72rem}.cal-grid .lf{display:none}.cal-grid .ls{display:inline}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -47,14 +77,25 @@
       <article class="card" id="strikes" style="border-left:5px solid var(--gold)">
         <span class="eyebrow" style="color:var(--gold-deep)">Update &bull; 26 October 2026</span>
         <h2 style="font-size:1.4rem">Doctors&rsquo; strikes announced for November</h2>
+        <figure class="cal" role="img" aria-label="Calendar for 16 to 29 November 2026. Northern Ireland: full walkout by resident doctors on Friday 20 November; Christmas Day-level cover by consultants and SAS doctors on Monday 23 November. England: consultants provide Christmas Day-level cover on Wednesday 25 and Thursday 26 November, ending at 06:59 on Friday 27 November.">
+          <div class="cal-head"><strong>November 2026</strong><span style="font-size:.85rem;color:var(--muted)">Strike days highlighted</span></div>
+          <div class="cal-grid" aria-hidden="true">
+            <div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
+            <div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day ni">20<small><span class="lf">NI resident doctors</span><span class="ls">NI</span></small></div><div class="day">21</div><div class="day">22</div>
+            <div class="day eng">23<small><span class="lf">NI consultants &amp; SAS</span><span class="ls">NI</span></small></div><div class="day">24</div><div class="day eng">25<small><span class="lf">England consultants</span><span class="ls">Eng</span></small></div><div class="day eng">26<small><span class="lf">England consultants</span><span class="ls">Eng</span></small></div><div class="day">27</div><div class="day">28</div><div class="day">29</div>
+          </div>
+          <div class="cal-key" aria-hidden="true"><span class="k-ni">Full walkout</span><span class="k-eng">Christmas Day-level emergency cover</span></div>
+        </figure>
         <ul>
-          <li><strong>England, consultants:</strong> 48 hours from 06:59 on Wednesday 25 November to 06:59 on Friday 27 November. The BMA says emergency cover will continue, &ldquo;similar to how hospitals are staffed on Christmas Day&rdquo;.</li>
-          <li><strong>Northern Ireland, resident doctors:</strong> a 24-hour walkout from 7am on Friday 20 November to 7am on Saturday 21 November.</li>
-          <li><strong>Northern Ireland, consultants and SAS doctors:</strong> 24 hours of Christmas Day-level cover from 7am on Monday 23 November to 7am on Tuesday 24 November.</li>
+          <li><strong>England, consultants:</strong> 06:59 Wed 25 to 06:59 Fri 27 November.</li>
+          <li><strong>NI, resident doctors:</strong> 7am Fri 20 to 7am Sat 21 November.</li>
+          <li><strong>NI, consultants and SAS doctors:</strong> 7am Mon 23 to 7am Tue 24 November.</li>
         </ul>
-        <p><strong>Why:</strong> the BMA says the 2.4% plan for 2027/28 is a real-terms pay cut, alongside long-running concerns about consultants&rsquo; workload and working hours. It says the England strike can be avoided if the Health Secretary commits to funded, formal negotiations within four weeks. The Health Secretary called the announcement &ldquo;very disappointing&rdquo;. In Northern Ireland, the BMA says the health minister could not confirm whether this year&rsquo;s (2026/27) pay rise will be paid.</p>
-        <p><strong>If you or your family have an appointment:</strong> go as planned unless the hospital contacts you to change it. In an emergency, always call 999.</p>
-        <p><strong>If you are a doctor:</strong> for questions about the action, speak to the BMA or your union. For rotas and cover, speak to your employer.</p>
+        <p><strong>Why:</strong> the BMA calls the 2.4% plan a real-terms pay cut and wants formal talks on pay and workload, which it says could avert the England strike. The Health Secretary called it &ldquo;very disappointing&rdquo;. In Northern Ireland, the BMA says this year&rsquo;s pay rise has not been confirmed.</p>
+        <div class="tiles">
+          <div class="tile"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="7" width="32" height="29" rx="5" fill="#013f24"/><rect x="4" y="7" width="32" height="9" rx="4" fill="#d9a226"/><path d="M13 26l5 5 9-10" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><p><strong>Patients and families:</strong> go to your appointment as planned unless the hospital contacts you to change it. In an emergency, always call 999.</p></div>
+          <div class="tile"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#013f24"/><path d="M20 11v18M11 20h18" stroke="#d9a226" stroke-width="5" stroke-linecap="round"/></svg><p><strong>Doctors:</strong> for questions about the action, speak to the BMA or your union. For rotas and cover, speak to your employer.</p></div>
+        </div>
         <p><a href="https://www.bma.org.uk/bma-media-centre/consultants-in-england-to-take-strike-action-in-november" target="_blank" rel="noopener">England consultants&rsquo; strike (BMA)&nbsp;&rarr;</a><br>
         <a href="https://www.bma.org.uk/bma-media-centre/northern-ireland-hospital-doctors-announce-new-strike-dates" target="_blank" rel="noopener">Northern Ireland strike dates (BMA)&nbsp;&rarr;</a><br>
         <a href="https://www.itv.com/news/2026-10-26/senior-doctors-in-england-plan-november-strike" target="_blank" rel="noopener">Government response (ITV News)&nbsp;&rarr;</a></p>
@@ -69,6 +110,13 @@
       <article class="card">
         <h2 style="font-size:1.4rem">What 2.4% looks like</h2>
         <p>On a salary of &pound;30,000, a 2.4% rise is &pound;720 a year before tax and deductions, or about &pound;60 a month. On &pound;50,000 it is &pound;1,200 a year, or about &pound;100 a month.</p>
+        <figure class="bars" role="img" aria-label="Bar chart of NHS pay rises in England: 3.5% headline for doctors in 2026/27, 3.3% for Agenda for Change staff in 2026/27, and 2.4% proposed for 2027/28. Source: Department of Health and Social Care.">
+          <figcaption style="font-weight:700;color:var(--green);margin-bottom:6px">NHS pay rises in England</figcaption>
+          <div class="bar-row"><span>Doctors 2026/27 (headline)</span><div class="bar-track"><div class="bar" style="width:100%">3.5%</div></div></div>
+          <div class="bar-row"><span>Agenda for Change 2026/27</span><div class="bar-track"><div class="bar" style="width:94.3%">3.3%</div></div></div>
+          <div class="bar-row"><span>Proposed 2027/28 (both groups)</span><div class="bar-track"><div class="bar plan" style="width:68.6%">2.4%</div></div></div>
+          <p style="font-size:.82rem;color:var(--muted);margin:6px 0 0">Source: Department of Health and Social Care. Green: awarded. Gold: proposed.</p>
+        </figure>
         <p>This year (2026/27) Agenda for Change staff in England received 3.3% and doctors a headline 3.5%. <a href="https://healthmedia.blog.gov.uk/2026/03/26/nhs-pay-awards-for-2026-and-resident-doctor-strikes-everything-you-need-to-know" target="_blank" rel="noopener">2026/27 awards explained by DHSC&nbsp;&rarr;</a></p>
       </article>
       <article class="card">
