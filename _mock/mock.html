@@ -1,0 +1,76 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glance mock</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=13">
+<style>
+.mock{padding:28px 0 40px}
+.ic{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+/* A: picture cards */
+.A{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.A a{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:0 4px 14px rgba(1,63,36,.07)}
+.A .pic{position:relative;height:120px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.A .pic.g{background:linear-gradient(135deg,#e6f1ea,#cfe4d7)}.A .pic.y{background:linear-gradient(135deg,#fdf3da,#f6e0a6)}
+.A .pic:before,.A .pic:after{content:"";position:absolute;border-radius:50%}
+.A .pic:before{width:160px;height:160px;right:-40px;top:-60px;background:rgba(255,255,255,.55)}
+.A .pic:after{width:90px;height:90px;left:-25px;bottom:-35px;background:rgba(217,162,38,.25)}
+.A .pic.y:after{background:rgba(1,63,36,.12)}
+.A .pic svg{width:64px;height:64px;color:var(--green);position:relative;z-index:1}
+.A .tag{position:absolute;left:12px;top:12px;z-index:1;background:#fff;color:var(--green);font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.A .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.A b{font-family:'Playfair Display',serif;font-size:1.12rem;line-height:1.25;color:var(--green)}
+.A .when{margin-top:auto;font-weight:700;color:var(--gold-deep);font-size:.92rem}
+/* B: deadline list */
+.B{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.B a{display:grid;grid-template-columns:44px 92px 1fr 28px;align-items:center;gap:18px;padding:16px 8px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.B a:hover{background:#fbf8ef}
+.B .n{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);font-weight:700}
+.B .d{text-align:center;border:2px solid var(--green);border-radius:12px;padding:6px 4px;line-height:1.1;color:var(--green)}
+.B .d big{display:block;font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700}
+.B .d small{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.B .d.any{border-style:dashed;border-color:#b9c7be}
+.B .d.any big{font-size:1.05rem;padding:9px 0}
+.B .who{display:block;font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.B b{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--green)}
+.B .go{font-size:1.4rem;color:var(--gold-deep);font-weight:700}
+/* C: featured + five */
+.C{display:grid;grid-template-columns:1.15fr 1fr;gap:20px}
+.C .feat{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+.C .art{position:relative;height:200px;background:linear-gradient(135deg,#fdf3da,#f3d48a);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.C .art:before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-80px;top:-120px;background:rgba(255,255,255,.5)}
+.C .art:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;left:-40px;bottom:-60px;background:rgba(1,63,36,.12)}
+.C .art svg{width:96px;height:96px;color:var(--green);position:relative;z-index:1}
+.C .flag{position:absolute;left:16px;top:16px;z-index:1;background:var(--green);color:#fff;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.C .fb{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px}
+.C .fb b{font-family:'Playfair Display',serif;font-size:1.6rem;line-height:1.2;color:var(--green)}
+.C .fb p{margin:0;color:var(--muted)}
+.C .btn{align-self:flex-start;margin-top:6px;background:var(--gold);color:var(--green-ink);font-weight:800;padding:10px 18px;border-radius:999px}
+.C ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.C li a{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:12px 14px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;text-decoration:none;color:var(--ink)}
+.C li svg{width:44px;height:44px;padding:9px;border-radius:50%;background:#e9f2ec;color:var(--green)}
+.C li b{display:block;font-family:'Playfair Display',serif;color:var(--green);font-size:1.02rem;line-height:1.25}
+.C li span{font-size:.8rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.C li em{font-style:normal;font-weight:700;color:var(--gold-deep);font-size:.85rem;white-space:nowrap}
+@media (max-width:760px){.A{grid-template-columns:1fr 1fr}.C{grid-template-columns:1fr}}
+@media (max-width:560px){.A{grid-template-columns:1fr}.A .pic{height:96px}
+.B a{grid-template-columns:70px 1fr 20px;gap:12px}.B .n{display:none}.B b{font-size:1.08rem}.B .d big{font-size:1.5rem}
+.C .art{height:140px}.C .art svg{width:64px;height:64px}.C li a{grid-template-columns:40px 1fr}.C li em{grid-column:2}}
+</style></head><body>
+<header class="site-header"><div class="wrap"><a class="brand" href="#"><img src="../assets/crest-sm.png" alt="" width="48" height="47"><div><strong>IHPN-UK</strong><span>Igbo Healthcare Professionals Network (UK)</span></div></a><button class="nav-toggle">Menu</button><nav class="nav"><ul><li><a>Home</a></li><li><a>About</a></li><li><a>Membership</a></li><li><a>News</a></li><li><a>Contact</a></li></ul></nav></div></header>
+<section class="page-hero"><div class="wrap"><span class="eyebrow">Opportunities &bull; 26 October 2026</span><h1>Opportunities this week</h1><p class="lead">Six picks, checked for you. Tap one to jump to it.</p></div></section>
+<section class="mock"><div class="wrap" id="out"></div></section>
+<script>
+const I={star:'<path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/>',globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>',eye:'<path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3.2"/>',pill:'<rect x="3" y="8.5" width="18" height="7" rx="3.5" transform="rotate(-35 12 12)"/><path d="M9.2 8.1l5.6 7.8"/>',book:'<path d="M3 5.5c3-1.5 6-1.5 9 .5 3-2 6-2 9-.5V19c-3-1.5-6-1.5-9 .5-3-2-6-2-9-.5z"/><path d="M12 6v13.5"/>',bulb:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/>'};
+const P=[
+{i:'globe',who:'Doctors & non-medical professionals',t:'Public health specialty training',when:'Closes Thu 19 Nov, 4pm',day:'19',mon:'Nov',s:'Start training in August 2027 to become a public health consultant.'},
+{i:'eye',who:'Optometrists & opticians',t:'The Habit Effect: AOP webinar',when:'Tue 24 Nov, 7pm to 8pm',day:'24',mon:'Nov'},
+{i:'star',who:'Nurses & midwives',t:'Windrush Leadership Programme',when:'Closes Tue 8 Dec',day:'8',mon:'Dec'},
+{i:'pill',who:'Pharmacists',t:'Pharmacist Support',when:'Any time'},
+{i:'book',who:'Healthcare assistants & support workers',t:'Introducing practical healthcare',when:'Any time'},
+{i:'bulb',who:'Researchers & improvement leads',t:'Join Q, the improvement community',when:'Any time'}];
+const svg=(k,c='ic')=>`<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${I[k]}</svg>`;
+const v=location.hash.slice(1)||'A';let h='';
+if(v==='A')h='<div class="A">'+P.map((p,j)=>`<a href="#"><div class="pic ${j%2?'y':'g'}"><span class="tag">${p.who.split(' & ')[0]}</span>${svg(p.i)}</div><div class="body"><b>${p.t}</b><span class="when">${p.when}</span></div></a>`).join('')+'</div>';
+if(v==='B')h='<ol class="B">'+P.map((p,j)=>`<li><a href="#"><span class="n">${j+1}</span><span class="d ${p.day?'':'any'}">${p.day?`<big>${p.day}</big><small>${p.mon}</small>`:'<big>Any time</big>'}</span><span><span class="who">${p.who}</span><b>${p.t}</b></span><span class="go">→</span></a></li>`).join('')+'</ol>';
+if(v==='C'){const f=P[0];h=`<div class="C"><a class="feat" href="#"><div class="art"><span class="flag">Closes soonest</span>${svg(f.i)}</div><div class="fb"><span class="who" style="font-size:.8rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">${f.who}</span><b>${f.t}</b><p>${f.s}</p><span style="font-weight:800;color:var(--gold-deep)">${f.when}</span><span class="btn">See details →</span></div></a><ul>`+P.slice(1).map(p=>`<li><a href="#">${svg(p.i)}<div><span>${p.who}</span><b>${p.t}</b></div><em>${p.when}</em></a></li>`).join('')+'</ul></div>';}
+document.getElementById('out').innerHTML=h;
+</script></body></html>
