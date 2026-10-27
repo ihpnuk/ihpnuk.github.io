@@ -21,7 +21,7 @@ jobs:
           from kokoro import KPipeline
           p=KPipeline(lang_code='b')
           lines=[l.strip() for l in open('tts/kokoro.txt') if l.strip()]
-          for v in ['bf_emma','bf_isabella','bf_lily','bm_george','bm_lewis','bm_daniel']:
+          for v in ['bf_lily','bm_daniel']:
             os.makedirs(f'tts/k/{v}',exist_ok=True)
             for i,l in enumerate(lines,1):
               a=np.concatenate([x.audio.numpy() for x in p(l,voice=v,speed=1.0)])
