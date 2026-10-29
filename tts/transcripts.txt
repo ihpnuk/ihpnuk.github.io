@@ -1,0 +1,33 @@
+tts/c/bf_emma/l1.wav | You spend every shift caring for others.
+tts/c/bf_emma/l2.wav | So, who's caring for you?
+tts/c/bf_emma/l3.wav | This November, the Igbo Healthcare Professionals Network, iHPN UK, presents its very first talk on mental health and wellbeing.
+tts/c/bf_emma/l4.wav | Save the date, Sunday 22nd November
+tts/c/bf_emma/l5.wav | Shaped by our members, the session will explore the issues you told us matter most, work-life balance, burnout and financial pressure and the pressure to succeed.
+tts/c/bf_emma/l6.wav | Register your interest today at ihpnuk at outlook.com or visit ihpnuk.github.io And if you're struggling right now, Samaritans are there for you, free on 116123.
+tts/c/bf_lily/l1.wav | He's bent every shift, caring for others.
+tts/c/bf_lily/l2.wav | So who's caring for you?
+tts/c/bf_lily/l3.wav | This November, the Igbo Healthcare Professionals Network, IHPN UK, presents its very first talk on mental health and wellbeing.
+tts/c/bf_lily/l4.wav | Save the date Sunday the 22nd of November
+tts/c/bf_lily/l5.wav | Shaped by our members, the session will explore the issues you told us matter most work-life balance, burnout, and financial pressure and the pressure to succeed.
+tts/c/bf_lily/l6.wav | Register your interest today at ihpnuk at outlook.com or visit ihpnuk.github.io And if you're struggling right now, Samaritans are there for you free on 116 123.
+tts/k/bf_emma/l1.wav | You spend every shift caring for others.
+tts/k/bf_emma/l2.wav | So who's caring for you?
+tts/k/bf_emma/l3.wav | This November, the Ebo Healthcare Professionals Network, IHPN UK, presents its very first talk on mental health and wellbeing.
+tts/k/bf_emma/l4.wav | Save the date Sunday the 22nd of November
+tts/k/bf_emma/l5.wav | Shaped by our members, the session will explore the issues you told us matter most. Work-life balance, burnout and financial pressure, and the pressure to succeed.
+tts/k/bf_emma/l6.wav | Register your interest today at ihpnuk at outlook.com or visit ihpnuk.github.io and if you're struggling right now Samaritans are there for you free on 116123
+tts/k/bf_emma/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow the Ebo Healthcare Professionals Network at IHPN UK.
+tts/k/bf_isabella/l1.wav | Did you know, nearly one in two black heritage donors have a blood subtype called RO?
+tts/k/bf_isabella/l2.wav | It's rare in the wider population and many people with sickle cell need it.
+tts/k/bf_isabella/l3.wav | Sickle cell is an inherited condition that affects red blood cells.
+tts/k/bf_isabella/l4.wav | In Nigeria, at least 150,000 babies are born with it every year.
+tts/k/bf_isabella/l5.wav | In the UK, about 19,000 people live with it, yet just 3% of blood donors are from black communities.
+tts/k/bf_isabella/l6.wav | Check if you can give blood. Your local service is on screen.
+tts/k/bf_isabella/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow IHPNUK.
+tts/k/bf_lily/l1.wav | You spend every shift caring for others.
+tts/k/bf_lily/l2.wav | So who's caring for you?
+tts/k/bf_lily/l3.wav | This November, the Ebo Healthcare Professionals Network, IHPNUK, presents its very first talk on mental health and wellbeing.
+tts/k/bf_lily/l4.wav | Save the date Sunday 22nd November
+tts/k/bf_lily/l5.wav | Shaped by our members, the session will explore the issues you told us matter most Work-life balance, burnout and financial pressure and the pressure to succeed
+tts/k/bf_lily/l6.wav | Register your interest today at ihpnukatoutlook.com or visit ihpnuk.github.io and if you're struggling right now, Samaritans are there for you free on 116123.
+tts/k/bf_lily/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow the Ebo Healthcare Professionals Network at IHPNUK.
