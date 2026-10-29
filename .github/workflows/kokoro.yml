@@ -21,10 +21,10 @@ jobs:
           from kokoro import KPipeline
           p=KPipeline(lang_code='b')
           lines=[l.strip() for l in open('tts/kokoro.txt') if l.strip()]
-          for v in ['bf_emma']:
+          for v in ['bf_emma','bf_lily']:
             os.makedirs(f'tts/k/{v}',exist_ok=True)
             for i,l in enumerate(lines,1):
-              a=np.concatenate([x.audio.numpy() for x in p(l,voice=v,speed=1.0)])
+              a=np.concatenate([x.audio.numpy() for x in p(l,voice=v,speed=0.94)])
               sf.write(f'tts/k/{v}/l{i}.wav',a,24000)
           PY
           python k.py
