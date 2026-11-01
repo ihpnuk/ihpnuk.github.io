@@ -73,6 +73,7 @@ p{margin:0 0 1em}
 .hero h1{color:var(--green)}
 .hero h1 em{color:var(--gold-deep);font-style:italic}
 .eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-deep);margin-bottom:14px}
+.eyebrow a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}.eyebrow a:hover{color:var(--green)}
 .hero p.lead{font-size:1.2rem;color:var(--muted);max-width:36em}
 .hero .eyebrow{color:var(--gold-deep)}
 .hero .btn-outline,.cta .btn-outline{color:var(--green)}
@@ -288,3 +289,4 @@ section{padding:72px 0}
 @media (max-width:560px){.convo{grid-template-columns:1fr;gap:12px;padding:22px 20px}.convo-ic{width:52px;height:52px}}
 .convo .convo-mail{margin:12px 0 0;font-size:.92rem}
 .convo .convo-mail a{color:var(--green);font-weight:600}
+.news-learn{margin:-6px 0 22px;color:var(--muted)}
