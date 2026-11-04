@@ -1,0 +1,37 @@
+name: chatter
+on:
+  push:
+    branches: [claude/project-thread-9ivh81]
+    paths: [tts/chatter.txt]
+permissions:
+  contents: write
+jobs:
+  tts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: |
+          sudo apt-get -qq install -y ffmpeg >/dev/null
+          pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install -q chatterbox-tts
+          # reference voice: the synthetic Kokoro British voice (no real person)
+          for v in bf_emma bf_lily; do ffmpeg -v error -y -i tts/k/$v/l3.wav -i tts/k/$v/l5.wav -filter_complex "[0:a][1:a]concat=n=2:v=0:a=1" -ar 24000 ref_$v.wav; done
+          cat > c.py <<'PY'
+          import torchaudio as ta, os, sys
+          from chatterbox.tts import ChatterboxTTS
+          m=ChatterboxTTS.from_pretrained(device="cpu")
+          lines=[l.strip() for l in open('tts/chatter.txt') if l.strip()]
+          for v in ['bf_emma','bf_lily']:
+            os.makedirs(f'tts/c/{v}',exist_ok=True)
+            for i,l in enumerate(lines,1):
+              w=m.generate(l,audio_prompt_path=f'ref_{v}.wav',exaggeration=0.45,cfg_weight=0.4)
+              ta.save(f'tts/c/{v}/l{i}.wav',w,m.sr); print(v,i,flush=True)
+          PY
+          python c.py
+          ls -laR tts/c
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
+          git add tts/c; git commit -m "Chatter lines" || true; git pull --rebase origin claude/project-thread-9ivh81; git push origin HEAD:claude/project-thread-9ivh81

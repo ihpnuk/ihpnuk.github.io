@@ -1,6 +1,6 @@
 # IHPN-UK website
 
-Static site (no build step) for the Igbo Healthcare Professionals Network, made for free hosting on GitHub Pages.
+Static site (no build step) for the Igbo Healthcare Professionals Network UK, made for free hosting on GitHub Pages.
 
 Pages: `index.html` (home), `about.html`, `membership.html`, `contact.html`, `404.html`.
 Styling: `styles.css` (colours taken from the logo: green #013f24, gold #d9a226, on white). Script: `main.js` (mobile menu only).
