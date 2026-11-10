@@ -24,7 +24,7 @@ jobs:
           from chatterbox.tts import ChatterboxTTS
           m=ChatterboxTTS.from_pretrained(device="cpu")
           lines=[l.strip() for l in open('tts/chatter.txt') if l.strip()]
-          for v in ['bf_emma','bf_lily']:
+          for v in ['bf_emma']:
             os.makedirs(f'tts/c/{v}',exist_ok=True)
             for i,l in enumerate(lines,1):
               w=m.generate(l,audio_prompt_path=f'ref_{v}.wav',exaggeration=0.45,cfg_weight=0.4)
