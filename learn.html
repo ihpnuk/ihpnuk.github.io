@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Health and career guides for healthcare professionals | IHPN-UK</title>
-<meta name="description" content="Free health and career guides from the Igbo Healthcare Professionals Network (IHPN-UK), including a sickle cell guide and an NHS pay 2027/28 explainer.">
+<meta name="description" content="Free health and career guides and 3-minute quick reads from the Igbo Healthcare Professionals Network (IHPN-UK): sickle cell, NHS pay, burnout, rest rights at work and more.">
 <meta name="theme-color" content="#013f24">
 <meta property="og:title" content="Health and career guides for healthcare professionals | IHPN-UK">
-<meta property="og:description" content="Free health and career guides from the Igbo Healthcare Professionals Network (IHPN-UK), including a sickle cell guide and an NHS pay 2027/28 explainer.">
+<meta property="og:description" content="Free health and career guides and 3-minute quick reads from the Igbo Healthcare Professionals Network (IHPN-UK): sickle cell, NHS pay, burnout, rest rights at work and more.">
 <link rel="canonical" href="https://ihpnuk.github.io/learn.html">
 <meta property="og:url" content="https://ihpnuk.github.io/learn.html">
 <meta property="og:site_name" content="Igbo Healthcare Professionals Network (IHPN-UK)">
@@ -40,6 +40,21 @@
 .lbody b{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--green);line-height:1.2}.lbody p{margin:0;color:var(--muted)}
 .lgo{font-weight:800;color:var(--green);margin-top:4px}
 .lnote{margin-top:32px;color:var(--muted);font-size:.92rem}
+.shelf-head{margin:0 0 6px}.shelf-head h2{margin:2px 0 0}.shelf-head p{color:var(--muted);margin:4px 0 0}
+.shelf-k{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);font-weight:800}
+#quick-reads{margin-top:52px;scroll-margin-top:90px}#guides{scroll-margin-top:90px}
+.ljump{margin:14px 0 0;font-weight:700}.ljump a{color:var(--green)}
+.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
+.qcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .15s}
+.qcard:hover,.qcard:focus-visible{transform:translateY(-2px)}
+.qcard img{width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;display:block}
+.qbody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:5px;flex:1}
+.qbody b{font-family:'Playfair Display',serif;color:var(--green);font-size:1.12rem;line-height:1.25}
+.qbody p{margin:0;color:var(--muted);font-size:.95rem}
+.qbody .lgo{margin-top:auto;padding-top:6px}
+@media (max-width:900px){.qgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.qgrid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.qcard{transition:none}.qcard:hover{transform:none}}
 @media (max-width:700px){.lgrid{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.lcard{transition:none}.lcard:hover{transform:none}}
 </style>
@@ -50,8 +65,8 @@
   {
    "@type": "CollectionPage",
    "@id": "https://ihpnuk.github.io/learn.html",
-   "name": "Learn: health and career guides",
-   "description": "Free health and career guides from the Igbo Healthcare Professionals Network (IHPN-UK), including a sickle cell guide and an NHS pay 2027/28 explainer.",
+   "name": "Learn: health and career guides and quick reads",
+   "description": "Free health and career guides and 3-minute quick reads from the Igbo Healthcare Professionals Network (IHPN-UK): sickle cell, NHS pay, burnout, rest rights at work and more.",
    "url": "https://ihpnuk.github.io/learn.html",
    "inLanguage": "en-GB",
    "publisher": {
@@ -71,6 +86,24 @@
       "position": 2,
       "url": "https://ihpnuk.github.io/nhs-pay-2027-28.html",
       "name": "NHS pay 2027/28: what the 2.4% plan means for you"
+     },
+     {
+      "@type": "ListItem",
+      "position": 3,
+      "url": "https://ihpnuk.github.io/rest-rights-at-work-2026.html",
+      "name": "Know your rest rights at work"
+     },
+     {
+      "@type": "ListItem",
+      "position": 4,
+      "url": "https://ihpnuk.github.io/burnout-signs-2026.html",
+      "name": "Running on empty? 3 signs of burnout, and what helps"
+     },
+     {
+      "@type": "ListItem",
+      "position": 5,
+      "url": "https://ihpnuk.github.io/articles/connect-learn-progress.html",
+      "name": "How Igbo healthcare professionals in the UK can connect, learn and progress"
      }
     ]
    }
@@ -123,16 +156,23 @@
 <section class="page-hero"><div class="wrap">
   <span class="eyebrow">Learn</span>
   <h1>Health and career guides from our network</h1>
-  <p class="lead">Clear, checked guides on health and careers, written for Igbo healthcare professionals in the UK, our families and our community.</p>
+  <p class="lead">In-depth guides and quick reads on health and careers, written for Igbo healthcare professionals in the UK, our families and our community.</p>
+  <p class="ljump"><a href="#guides">Guides</a> <span aria-hidden="true">&bull;</span> <a href="#quick-reads">Quick reads</a></p>
 </div></section>
 <section>
   <div class="wrap" style="max-width:1000px">
-    <h2 class="sr">All guides</h2>
+    <div class="shelf-head" id="guides"><span class="shelf-k">In-depth</span><h2>Guides</h2><p>Full, checked guides you can come back to.</p></div>
     <div class="lgrid">
       <a class="lcard" href="sickle-cell-guide.html"><div class="lart"><img src="assets/learn/sickle-cell-guide.webp" alt="" width="640" height="320" loading="lazy"></div><div class="lbody"><span class="ltag">Health guide &bull; 8 min read</span><b>Sickle cell: a clear guide</b><p>Trait and genotype explained, signs and crises, UK screening, treatments including gene therapy, and myths versus facts.</p><span class="lgo">Read the guide <span aria-hidden="true">&rarr;</span></span></div></a>
       <a class="lcard" href="nhs-pay-2027-28.html"><div class="lart"><img src="assets/learn/nhs-pay-guide.webp" alt="" width="640" height="320" loading="lazy"></div><div class="lbody"><span class="ltag">Career guide &bull; Pay</span><b>NHS pay 2027/28 explained</b><p>What the proposed pay award means for you, and the latest on industrial action.</p><span class="lgo">Read the explainer <span aria-hidden="true">&rarr;</span></span></div></a>
     </div>
-    <p class="lnote">Health guides are general information, not medical advice. Each is checked against NHS and other official sources and reviewed by a qualified member before it goes live. Want a topic covered? <a href="mailto:ihpnuk@outlook.com?subject=Guide%20idea">Suggest a guide</a>.</p>
+    <div class="shelf-head" id="quick-reads"><span class="shelf-k">Short and useful</span><h2>Quick reads</h2><p>Key facts in 3 to 5 minutes, most with a short video.</p></div>
+    <div class="qgrid">
+      <a class="qcard" href="rest-rights-at-work-2026.html"><img src="assets/news/rest-rights-at-work-2026.webp" alt="" width="640" height="360" loading="lazy"><div class="qbody"><span class="ltag">Work rights &bull; 3 min read + video</span><b>Know your rest rights at work</b><p>Breaks, rest between shifts, a weekly day off and paid leave: the legal minimums for UK health staff.</p><span class="lgo">Read and watch <span aria-hidden="true">&rarr;</span></span></div></a>
+      <a class="qcard" href="burnout-signs-2026.html"><img src="assets/news/burnout-signs-2026.webp" alt="" width="640" height="360" loading="lazy"><div class="qbody"><span class="ltag">Wellbeing &bull; 3 min read + video</span><b>Running on empty? 3 signs of burnout</b><p>The World Health Organization&rsquo;s 3 signs, small steps that help, and free, confidential support in England, Scotland and Wales.</p><span class="lgo">Read and watch <span aria-hidden="true">&rarr;</span></span></div></a>
+      <a class="qcard" href="articles/connect-learn-progress.html"><img src="assets/news/connect-learn-progress-hero.webp" alt="" width="1280" height="720" loading="lazy"><div class="qbody"><span class="ltag">Career &bull; 5 min read</span><b>Connect, learn and progress</b><p>Five practical steps to build your network, keep a learning record for revalidation and plan your next move.</p><span class="lgo">Read the article <span aria-hidden="true">&rarr;</span></span></div></a>
+    </div>
+    <p class="lnote">Health guides and quick reads are general information, not medical advice. Each is checked against NHS and other official sources and reviewed by a qualified member before it goes live. Want a topic covered? <a href="mailto:ihpnuk@outlook.com?subject=Guide%20idea">Suggest a guide</a>.</p>
   </div>
 </section>
 <section class="section-alt">
