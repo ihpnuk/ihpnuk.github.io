@@ -289,7 +289,6 @@ section{padding:72px 0}
 @media (max-width:560px){.convo{grid-template-columns:1fr;gap:12px;padding:22px 20px}.convo-ic{width:52px;height:52px}}
 .convo .convo-mail{margin:12px 0 0;font-size:.92rem}
 .convo .convo-mail a{color:var(--green);font-weight:600}
-.news-learn{margin:-6px 0 22px;color:var(--muted)}
 .news-learn-new{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center;background:#fdf8ec;border:1px solid #f0e0b0;border-radius:14px;padding:12px;margin:-6px 0 24px;color:var(--ink)}
 .news-learn-new img{width:140px;height:80px;object-fit:cover;border-radius:10px;display:block}
 .news-learn-new .k{display:block;color:#6b4d0b;font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
