@@ -1,10 +1,10 @@
-tts/c/bf_emma/l1.wav | Burnout is one of the topics for our first talk, penciled in for Sunday, 22nd November. What helps you recharge? Tell us below and apply to join the Igbo Healthcare Professionals Network IHPN UK at the link in our bio.
+tts/c/bf_emma/l1.wav | Burnout is one of the topics for our first talk, penciled in for Sunday 22nd November. What helps you recharge? Tell us below and apply to join the Igbo Healthcare Professionals Network, IHPN UK, at the link in our bio.
 tts/c/bf_emma/l10.wav | Every year, you get at least 5.6 weeks of paid leave. That's 28 days for a five-day week, and your NHS contract may give you more.
 tts/c/bf_emma/l11.wav | Work-life balance is a top topic for our first talk, planned for Sunday 22nd November. Follow the Igbo Healthcare Professionals Network, IHPN UK and tell us below what helps you switch off.
 tts/c/bf_emma/l2.wav | Know your rights to rest at work. These are the legal minimums for adult workers, so save this.
 tts/c/bf_emma/l3.wav | Work-life balance is a top topic for our first talk, pencilled in for Sunday 22nd November. What helps you switch off? Tell us below and apply to join the Igbo Healthcare Professionals Network, IHPN UK, at the link in our bio.
 tts/c/bf_emma/l4.wav | Small steps help. Connect with people. Work smarter, not harder. And make time for yourself. If it lasts, talk to your GP or occupational health.
-tts/c/bf_emma/l5.wav | There's free support for health staff in England, Scotland and Wales, and Samaritans are there anytime on 116 123.
+tts/c/bf_emma/l5.wav | There's free support for health staff in England, Scotland and Wales, and Samaritans are there any time on 116 123.
 tts/c/bf_emma/l6.wav | Burnout is one of the topics for our first talk. Plan for Sunday 22nd November. Follow the Igbo Healthcare Professionals Network, iHPN UK and tell us below what helps you recharge.
 tts/c/bf_emma/l7.wav | Know your rest, rights at work. These are the legal minimums for adult workers, so save this.
 tts/c/bf_emma/l8.wav | If you work more than six hours a day, you have the right to one uninterrupted 20-minute break. By law, it doesn't have to be paid. Your contract decides.
@@ -12,7 +12,7 @@ tts/c/bf_emma/l9.wav | Between working days, you get 11 hours rest plus 24 hours
 tts/c/bf_lily/l1.wav | Ever felt like the only Igbo voice on your ward?
 tts/c/bf_lily/l2.wav | You're not alone. Nearly one in four people on the UK's Nursing and Midwifery Register were educated abroad.
 tts/c/bf_lily/l3.wav | Our new guide shares five practical steps to connect, learn and progress in UK healthcare.
-tts/c/bf_lily/l4.wav | Read it free at ihpnuk.github.io from the Igbo Healthcare Professionals Network, ihpnuk.
+tts/c/bf_lily/l4.wav | Read it free at ihpnuk.github.io from the Igbo Healthcare Professionals Network, ihpnuk
 tts/c/bf_lily/l5.wav | In the UK, about 19,000 people live with it. Yet just three in every hundred blood donors are from black communities.
 tts/c/bf_lily/l6.wav | Check if you can give blood. Your local service is on screen.
 tts/c/bf_lily/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow the Igbo Healthcare Professionals Network, IHPN UK.
@@ -21,7 +21,7 @@ tts/k/bf_emma/l2.wav | So who's caring for you?
 tts/k/bf_emma/l3.wav | This November, the Ebo Healthcare Professionals Network, IHPN UK, presents its very first talk on mental health and wellbeing.
 tts/k/bf_emma/l4.wav | Save the date Sunday the 22nd of November
 tts/k/bf_emma/l5.wav | Shaped by our members, the session will explore the issues you told us matter most. Work-life balance, burnout and financial pressure, and the pressure to succeed.
-tts/k/bf_emma/l6.wav | Register your interest today at ihpnuk at outlook.com or visit ihpnuk.github.io and if you're struggling right now Samaritans are there for you free on 116123
+tts/k/bf_emma/l6.wav | Register your interest today at ihpnuk at outlook.com or visit ihpnuk.github.io and if you're struggling right now Samaritans are there for you free on 116 123
 tts/k/bf_emma/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow the Ebo Healthcare Professionals Network at IHPN UK.
 tts/k/bf_isabella/l1.wav | Did you know, nearly one in two black heritage donors have a blood subtype called RO?
 tts/k/bf_isabella/l2.wav | It's rare in the wider population and many people with sickle cell need it.
@@ -32,8 +32,8 @@ tts/k/bf_isabella/l6.wav | Check if you can give blood. Your local service is on
 tts/k/bf_isabella/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow IHPNUK.
 tts/k/bf_lily/l1.wav | You spend every shift caring for others.
 tts/k/bf_lily/l2.wav | So who's caring for you?
-tts/k/bf_lily/l3.wav | This November, the Ebo Healthcare Professionals Network, IHPN UK, presents its very first talk on mental health and wellbeing.
+tts/k/bf_lily/l3.wav | This November, the Ebo Healthcare Professionals Network, IHPNUK, presents its very first talk on mental health and wellbeing.
 tts/k/bf_lily/l4.wav | Save the date Sunday 22nd November
 tts/k/bf_lily/l5.wav | Shaped by our members, the session will explore the issues you told us matter most – work-life balance, burnout and financial pressure and the pressure to succeed.
-tts/k/bf_lily/l6.wav | Register your interest today at ihpnuk at outlook.com, or visit ihpnuk.github.io and if you're struggling right now, Samaritans are there for you free on 116123.
+tts/k/bf_lily/l6.wav | Register your interest today at ihpnuk at Outlook.com or visit ihpnuk.github.io and if you're struggling right now, Samaritans are there for you free on 116123.
 tts/k/bf_lily/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow the Ebo Healthcare Professionals Network at IHPNUK.
