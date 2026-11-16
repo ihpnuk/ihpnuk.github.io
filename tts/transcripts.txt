@@ -8,7 +8,7 @@ tts/c/bf_emma/l3.wav | Left untreated, it raises your risk of heart attack, stro
 tts/c/bf_emma/l4.wav | Small swaps help. Adults should have no more than 6g of salt a day, about 1 level teaspoon. Using stock cubes? Try reduced stock versions and go easy on salty sauces.
 tts/c/bf_emma/l5.wav | A reading of 140 over 90 or higher is high. Many pharmacies offer free checks if you're 40 or over or ask your GP. Not checked in five years? Book one this week.
 tts/c/bf_emma/l6.wav | When did you last check yours? Tell us below and apply to join the Igbo Healthcare Professionals Network, IHPN UK, at the link in our bio.
-tts/c/bf_emma/l7.wav | Doctors, pharmacists and optometrists due to revalidate. Here's exactly what your regulator asks for.
+tts/c/bf_emma/l7.wav | Doctors, pharmacists and optometrists due to re-validate. Here's exactly what your regulator asks for.
 tts/c/bf_emma/l8.wav | Doctors usually revalidate every five years. You need an annual appraisal and your responsible officer makes your recommendation.
 tts/c/bf_emma/l9.wav | brings six types of evidence, CPD, quality improvement, significant events, patient feedback, colleague feedback and complaints and compliments.
 tts/c/bf_lily/l1.wav | Ever felt like the only Igbo voice on your ward?
@@ -23,7 +23,7 @@ tts/k/bf_emma/l2.wav | So who's caring for you?
 tts/k/bf_emma/l3.wav | This November, the Ebo Healthcare Professionals Network, IHPN UK, presents its very first talk on mental health and wellbeing.
 tts/k/bf_emma/l4.wav | Save the date Sunday the 22nd of November
 tts/k/bf_emma/l5.wav | Shaped by our members, the session will explore the issues you told us matter most. Work-life balance, burnout and financial pressure, and the pressure to succeed.
-tts/k/bf_emma/l6.wav | Register your interest today at ihpnuk at Outlook.com or visit ihpnuk.github.io and if you're struggling right now, Samaritans are there for you, free on 116123.
+tts/k/bf_emma/l6.wav | Register your interest today at ihpnuk at Outlook.com or visit ihpnuk.github.io and if you're struggling right now. Samaritans are there for you, free on 116123.
 tts/k/bf_emma/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow the Ebo Healthcare Professionals Network at IHPN UK.
 tts/k/bf_isabella/l1.wav | Did you know, nearly one in two black heritage donors have a blood subtype called RO?
 tts/k/bf_isabella/l2.wav | It's rare in the wider population and many people with sickle cell need it.
@@ -34,8 +34,8 @@ tts/k/bf_isabella/l6.wav | Check if you can give blood. Your local service is on
 tts/k/bf_isabella/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow IHPNUK.
 tts/k/bf_lily/l1.wav | You spend every shift caring for others.
 tts/k/bf_lily/l2.wav | So who's caring for you?
-tts/k/bf_lily/l3.wav | This November, the Ebo Healthcare Professionals Network, IHPN UK, presents its very first talk on mental health and wellbeing.
-tts/k/bf_lily/l4.wav | Save the date Sunday 22nd November
+tts/k/bf_lily/l3.wav | This November, the Ebo Healthcare Professionals Network, IHPNUK, presents its very first talk on mental health and wellbeing.
+tts/k/bf_lily/l4.wav | Save the date Sunday 22nd November.
 tts/k/bf_lily/l5.wav | Shaped by our members, the session will explore the issues you told us matter most Work-life balance, burnout and financial pressure and the pressure to succeed
-tts/k/bf_lily/l6.wav | Register your interest today at ihpnukatoutlook.com or visit ihpnuk.github.io and if you're struggling right now, Samaritans are there for you free on 116123.
+tts/k/bf_lily/l6.wav | Register your interest today at ihpnuk at outlook.com, or visit ihpnuk.github.io and if you're struggling right now, Samaritans are there for you free on 116123.
 tts/k/bf_lily/l7.wav | As Black History Month ends, history is made by people who show up for each other. Have you given blood? Tell us below and follow the Ebo Healthcare Professionals Network at IHPNUK.
