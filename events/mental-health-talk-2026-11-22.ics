@@ -5,12 +5,14 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:mental-health-talk-20261122@ihpnuk.github.io
-DTSTAMP:20261022T180000Z
-DTSTART;VALUE=DATE:20261122
-DTEND;VALUE=DATE:20261123
-SUMMARY:IHPN-UK mental health talk
-DESCRIPTION:Talk from the Igbo Healthcare Professionals Network (IHPN-UK). Planned date\, which may move slightly. Confirmed date\, time and joining details to follow. Register your interest: ihpnuk@outlook.com
-URL:https://ihpnuk.github.io/news.html#events
+DTSTAMP:20261118T170000Z
+DTSTART:20261122T193000Z
+DTEND:20261122T203000Z
+SUMMARY:Wellness and Resilience Talk with IHPN-UK (live on TikTok)
+DESCRIPTION:Mental health talk from the Igbo Healthcare Professionals Network (IHPN-UK)\, live on TikTok at 7:30pm UK time. Follow @ihpnuk: https://www.tiktok.com/@ihpnuk
+LOCATION:TikTok LIVE @ihpnuk
+URL:https://www.tiktok.com/@ihpnuk
+SEQUENCE:1
 TRANSP:TRANSPARENT
 END:VEVENT
 END:VCALENDAR
