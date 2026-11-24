@@ -12,7 +12,7 @@ Assets: `assets/` holds the logo, crest, icons, and the intro video (compressed 
 3. In the repository: Settings > Pages > Source: "Deploy from a branch", branch `main`, folder `/ (root)`.
 
 ## Editing
-Text lives directly in the HTML files. Change the TikTok link or email by searching for `tiktok.com/@ihpnuk` or `ihpnuk@outlook.com`.
+Text lives directly in the HTML files. Change the TikTok link, Instagram link or email by searching for `tiktok.com/@ihpnuk`, `instagram.com/ihpnuk` or `ihpnuk@outlook.com`.
 
 ## Where new posts go: Learn or News
 - **Learn > Quick reads** (`learn.html#quick-reads`): short educational posts that stay useful for months (health tips, work rights, wellbeing, career how-tos), including every educational carousel or video we post on social. Add a `qcard` at the start of the Quick reads grid, add it to the `ItemList` in learn.html's `seo-ld`, set the post's breadcrumb to Learn > Quick reads (visible and JSON-LD), use `"@type": "Article"`, and mark Learn as `aria-current` in the menu. Then point News's "New on Learn" banner (`.news-learn-new`) at the new post.
