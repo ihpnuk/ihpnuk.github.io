@@ -1,0 +1,35 @@
+name: photo-fetch
+on:
+  push:
+    branches: [claude/project-thread-9ivh81]
+    paths: [photos/ids.txt]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch Pexels photos
+        run: |
+          set +e
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          mkdir -p photos/thumb photos/full
+          while read mode spec; do
+            [ -z "$mode" ] && continue
+            a=${spec%-*}; b=${spec#*-}
+            for id in $(seq $a $b); do
+              if [ "$mode" = thumb ]; then w=360; out=photos/thumb/$id.jpg; else w=2200; out=photos/full/$id.jpg; fi
+              curl -sfL -A "$UA" -m 60 "https://images.pexels.com/photos/$id/pexels-photo-$id.jpeg?auto=compress&cs=tinysrgb&w=$w" -o $out || rm -f $out
+              [ -f $out ] && echo "$id ok $(stat -c %s $out)" >> photos/log.txt
+            done
+          done < photos/ids.txt
+          true
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add photos
+          git commit -m "Photos" || echo nothing
+          git push origin HEAD:claude/project-thread-9ivh81
